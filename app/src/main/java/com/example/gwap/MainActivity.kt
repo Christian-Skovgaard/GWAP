@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun navComponent () {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "homeScreen", builder = {
+    NavHost(navController = navController, startDestination = "StartScreen", builder = {
         composable("homeScreen") {HomeScreen(navController)}
         composable("CreateProfile1") {CreateProfile1()}
         composable("StartScreen") {StartScreen()}
@@ -119,4 +119,3 @@ fun HomeScreen (navController: NavController) {
 fun CreateProfile1 () {
     Text ("yes")
 }
-
