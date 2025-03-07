@@ -26,15 +26,16 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
+
 @Composable
-fun InputField () {
+fun InputField (fieldText: String) {
     Column(
         modifier = Modifier.padding(10.dp)
     ) {
         Text(
-            text="text",
-            modifier = Modifier.padding(bottom = 5.dp)
+            text=fieldText,
+            modifier = Modifier.padding(bottom = 5.dp),
+            color = Color(android.graphics.Color.parseColor("#D0D0D0"))
         )
         var text by remember {mutableStateOf(TextFieldValue(""))}
         BasicTextField (
@@ -45,5 +46,15 @@ fun InputField () {
                 .fillMaxWidth()
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TitleText (titleText:String) {
+    Text(
+        text = "Opret Profil",
+        fontSize = 40.sp,
+        modifier = Modifier.padding(10.dp)
+    )
 }
 
