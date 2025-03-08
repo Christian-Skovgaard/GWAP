@@ -55,15 +55,15 @@ fun InputField (fieldText: String) {
 @Composable
 fun TitleText (titleText:String) {
     Text(
-        text = "Opret Profil",
+        text = titleText,
         fontSize = 40.sp,
         modifier = Modifier.padding(10.dp)
     )
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
-fun BackgroundBox () {
+fun BackgroundBox (content: @Composable () -> Unit) {
     Box (
         modifier = Modifier.fillMaxSize()
     ) {
@@ -71,9 +71,24 @@ fun BackgroundBox () {
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxWidth(0.8f)
-                .fillMaxHeight(0.6f)
-                .background(color = Color.Red)
-        ) {}
+                .fillMaxHeight(0.65f)
+                .background(color = Color(android.graphics.Color.parseColor("#FFFFFF")))
+                .align(alignment = Alignment.Center)
+                .border(
+                    width = 13.dp,
+                    color = Color(android.graphics.Color.parseColor("#A37AFA")),
+                    shape = RoundedCornerShape(16.dp)
+                    )
+        ) {
+            Column (
+                modifier = Modifier
+                    .padding(50.dp)
+                    .fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ){
+                content()
+            }
+        }
     }
 }
 
