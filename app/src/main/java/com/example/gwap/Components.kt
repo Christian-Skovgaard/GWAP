@@ -10,6 +10,8 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -23,17 +25,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import java.lang.reflect.Modifier
 
 @OptIn(ExperimentalMaterial3Api::class)
 
@@ -100,6 +98,7 @@ fun PreviewSimpleScreen() {
 
 
 @Preview(showBackground = true)
+
 @Composable
 fun TitleText (titleText:String) {
     Text(
@@ -107,5 +106,21 @@ fun TitleText (titleText:String) {
         fontSize = 40.sp,
         modifier = Modifier.padding(10.dp)
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BackgroundBox () {
+    Box (
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Box (
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .fillMaxHeight(0.6f)
+                .background(color = Color.Red)
+        ) {}
+    }
 }
 

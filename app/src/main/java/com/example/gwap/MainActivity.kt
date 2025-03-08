@@ -34,24 +34,24 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            navComponent()
+            NavComponent()
         }
     }
 }
 
 @Composable
-fun navComponent () {
+fun NavComponent () {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "homeScreen", builder = {
+    NavHost(navController = navController, startDestination = "StartScreen", builder = {
         composable("homeScreen") {HomeScreen(navController)}
         composable("CreateProfile1") {CreateProfile1()}
-        composable("StartScreen") {StartScreen()}
+        composable("StartScreen") {StartScreen(navController)}
     })
 }
 
-@Preview(showBackground = true)
+
 @Composable
-fun StartScreen () {
+fun StartScreen (navController: NavController) {
     Box (
         modifier = Modifier
             //.background(color= Color.Red)
@@ -78,7 +78,7 @@ fun StartScreen () {
                         Text(text="Opret Profil")
                     }
                     Button(
-                        onClick = {},
+                        onClick = {navController.navigate("CreateProfile1")},
                         modifier = Modifier.fillMaxWidth(0.8f)
                     ) {
                         Text(text="Log In")
@@ -100,6 +100,12 @@ fun StartScreen () {
     }
 }
 
+@Preview(showBackground = true)
+@Composable
+fun CreateProfile1 () {
+    BackgroundBox()
+}
+
 @Composable
 fun HomeScreen (navController: NavController) {
     Column {
@@ -114,9 +120,3 @@ fun HomeScreen (navController: NavController) {
         }
     }
 }
-
-@Composable
-fun CreateProfile1 () {
-    Text ("yes")
-}
-
