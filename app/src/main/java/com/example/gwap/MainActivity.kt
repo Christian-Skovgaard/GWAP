@@ -123,7 +123,7 @@ fun CreateProfile1 (navController: NavController) {
 fun CreateProfile2 () {
     BackgroundBox {
         TitleText("Find tøj der passer DIG")
-        //størrelser
+        //størrelser ah
         SizeBoxesOnPage()
 
         Text(text ="Så viser vi kun tøj du kan passe;)")
