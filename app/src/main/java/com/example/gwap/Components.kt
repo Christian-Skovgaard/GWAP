@@ -3,7 +3,6 @@ package com.example.gwap
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,10 +14,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -36,6 +38,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -150,5 +153,58 @@ fun Background () {
             contentScale = ContentScale.Crop,
             modifier = Modifier.matchParentSize() // Ensures the image covers the entire Box
         )
+    }
+}
+
+//(vælgbare) bokse til tøjstrørrelser
+@Composable
+fun SizeboxSelecter() {
+    val sizes = listOf("XXS", "XS", "S", "M", "L", "XL", "XXL")
+    val selectedSize by remember { mutableStateOf<String?>(null) } //chat
+
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        /*
+        items(sizes) { size ->
+            SizeBoxes(
+                size = size,
+                isSelected = (size == selectedSize),
+                onClick = {
+                    println("size chosen")
+                    selectedSize = size
+                    //gør den grå
+                })
+
+        }
+         */
+    }
+}
+
+@Composable
+fun SizeBoxes(size: String, isSelected: Boolean,
+              onClick:() -> Unit ) {
+    Card(
+        modifier = Modifier
+            .size(60.dp)
+            .clickable {
+                onClick()
+            },
+        shape = RoundedCornerShape(8.dp)
+    ) {
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier
+                .fillMaxSize()
+                //ændre farven til grå hvis valgt
+                .background(if (isSelected) Color.Gray else Color.White)
+        ){
+            Text(
+                text = size,
+                fontSize = 19.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
     }
 }
