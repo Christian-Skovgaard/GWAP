@@ -43,9 +43,8 @@ class MainActivity : ComponentActivity() {
 fun NavComponent () {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "StartScreen", builder = {
-        composable("homeScreen") {HomeScreen(navController)}
-        composable("CreateProfile1") {CreateProfile1()}
         composable("StartScreen") {StartScreen(navController)}
+        composable("CreateProfile1") {CreateProfile1()}
     })
 }
 
@@ -103,20 +102,11 @@ fun StartScreen (navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun CreateProfile1 () {
-    BackgroundBox()
-}
-
-@Composable
-fun HomeScreen (navController: NavController) {
-    Column {
-        Text(
-            text = "Gwap",
-            fontSize = 50.sp
-        )
-        Column {
-            Button(onClick = {navController.navigate("CreateProfile1")}) {
-                Text("Opret profil")
-            }
-        }
+    BackgroundBox {
+        TitleText("Lav din profil")
+        InputField("Fulde navn *")
+        InputField("Brugernavn *")
+        InputField("Email *")
     }
+
 }
