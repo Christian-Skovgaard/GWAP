@@ -8,10 +8,16 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -22,6 +28,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
@@ -38,7 +45,8 @@ fun InputField (fieldText: String) {
         Text(
             text=fieldText,
             modifier = Modifier.padding(bottom = 5.dp),
-            color = Color(android.graphics.Color.parseColor("#D0D0D0"))
+            color = Color(android.graphics.Color.parseColor("#D0D0D0")),
+            fontSize = 17.sp
         )
         var text by remember {mutableStateOf(TextFieldValue(""))}
         BasicTextField (
@@ -46,19 +54,45 @@ fun InputField (fieldText: String) {
             onValueChange = {newText -> text = newText},
             modifier = Modifier
                 .border(width = 2.dp, color = Color(android.graphics.Color.parseColor("#D0D0D0")), RoundedCornerShape(3.dp))
+                .height(30.dp)
                 .fillMaxWidth()
+
         )
     }
 }
 
-
+//@Preview(showBackground = true)
 @Composable
 fun TitleText (titleText:String) {
-    Text(
-        text = titleText,
-        fontSize = 40.sp,
-        modifier = Modifier.padding(10.dp)
-    )
+    Column {
+        Text(
+            text = titleText,
+            fontSize = 30.sp,
+            modifier = Modifier.padding(10.dp)
+        )
+        HorizontalDivider(
+            color = Color(android.graphics.Color.parseColor("#D0D0D0")),
+            thickness = 5.dp,
+            modifier = Modifier
+                .padding(bottom = 5.dp)
+                .clip(RoundedCornerShape(4.dp))
+
+
+        )
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreenButton () {
+    Button(
+        onClick = {}
+    ) {
+        Text(
+            text = "Næste"
+        )
+    }
 }
 
 //@Preview(showBackground = true)

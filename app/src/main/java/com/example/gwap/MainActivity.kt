@@ -103,8 +103,10 @@ fun StartScreen (navController: NavController) {
 @Composable
 fun CreateProfile1 () {
     BackgroundBox {
-        TitleText("hej")
-        InputField("wow!")
+        TitleText("Lav din profil")
+        InputField("Fulde navn *")
+        InputField("Brugernavn *")
+        InputField("Email *")
     }
 
 }
