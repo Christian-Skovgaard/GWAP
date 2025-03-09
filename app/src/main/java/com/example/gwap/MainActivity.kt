@@ -1,5 +1,6 @@
 package com.example.gwap
 
+import android.icu.text.CaseMap.Title
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -109,4 +110,30 @@ fun CreateProfile1 () {
         InputField("Email *")
     }
 
+}
+
+
+
+@Composable
+fun CreateProfile2 () {
+    BackgroundBox {
+        TitleText("Find tøj der passer DIG")
+        //find ud af at lave en divider streg
+        Text(text ="Så viser vi kun tøj du kan passe;)")
+        TitleText("Hvad er din skostørrelse?")
+        //slider
+    }
+}
+
+
+@Composable
+fun CreateProfile3() {
+    BackgroundBox {
+        TitleText("Er du klar til at mødes?")
+        //dividier
+        Text(text = "Foretrækker du at mødes når i bytter tøj? Indtast dit postnummer og se tøj tæt på dig!")
+        InputField("Postnummer")
+        Text(text="Radius i km")
+        //slider
+    }
 }
