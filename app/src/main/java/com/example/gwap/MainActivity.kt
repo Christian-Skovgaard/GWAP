@@ -114,8 +114,6 @@ fun CreateProfile1 (navController: NavController) {
     }
 }
 
-
-
 @Composable
 fun CreateProfile2 () {
     BackgroundBox {
