@@ -15,7 +15,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,7 +38,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NavComponent()
-            CreateProfile2()
         }
     }
 }
@@ -48,12 +49,14 @@ fun NavComponent () {
         composable("StartScreen") {StartScreen(navController)}
         composable("CreateProfile1") {CreateProfile1(navController)}
         composable("CreateProfile2") {CreateProfile2()}
+        composable("CreateProfile3") {CreateProfile3()}
     })
 }
 
 
 @Composable
 fun StartScreen (navController: NavController) {
+    Background()
     Box (
         modifier = Modifier
             //.background(color= Color.Red)
@@ -68,7 +71,8 @@ fun StartScreen (navController: NavController) {
             Box () {
                 Text(
                     text="Gwap",
-                    fontSize = 100.sp
+                    fontSize = 100.sp,
+                    color = Color.White
                 )
             }
             Box {
@@ -95,9 +99,9 @@ fun StartScreen (navController: NavController) {
             verticalAlignment = Alignment.Bottom,
             horizontalArrangement = Arrangement.SpaceAround
         ) {
-            Text(text = "Byt.", fontSize = 20.sp)
-            Text(text = "Brug.", fontSize = 20.sp)
-            Text(text = "Bevar.", fontSize = 20.sp)
+            Text(text = "Byt.", fontSize = 20.sp, color = Color.White)
+            Text(text = "Brug.", fontSize = 20.sp, color = Color.White)
+            Text(text = "Bevar.", fontSize = 20.sp, color = Color.White)
         }
     }
 }
@@ -105,6 +109,7 @@ fun StartScreen (navController: NavController) {
 //@Preview(showBackground = true)
 @Composable
 fun CreateProfile1 (navController: NavController) {
+    Background()
     BackgroundBox {
         TitleText("Lav din profil")
         InputField("Fulde navn *")
@@ -124,6 +129,7 @@ fun CreateProfile2 () {
         //slider
     }
 }
+
 
 
 @Composable

@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
@@ -25,6 +26,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Slider
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -89,7 +92,38 @@ fun TitleText (titleText:String) {
                 .clip(RoundedCornerShape(4.dp))
         )
     }
+}
 
+@OptIn(ExperimentalMaterial3Api::class)
+@Preview(showBackground = true)
+@Composable
+fun PurpleSlider () {
+    var sliderValue by remember { mutableStateOf(0f)}
+    Box () {
+        Slider (
+            value = sliderValue,
+            onValueChange = {sliderValue = it},
+            valueRange = 0f..100f,
+            colors = SliderDefaults.colors(
+                activeTrackColor = Color(0xffA37AFA),
+                inactiveTrackColor = Color(0xffA37AFA)
+            ),
+            thumb = {
+                Box(
+                    modifier = Modifier
+                        .size(48.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(Color(0xFFD0D0D0)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = sliderValue.toInt().toString(),
+                        fontSize = 20.sp,
+                    )
+                }
+            }
+        )
+    }
 }
 
 //@Preview(showBackground = true)
@@ -143,7 +177,7 @@ fun BackgroundBox (content: @Composable () -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun Background () {
     Box (
