@@ -2,12 +2,15 @@ package com.example.gwap
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -192,55 +195,50 @@ fun Background () {
     }
 }
 
-//(vælgbare) bokse til tøjstrørrelser
-@Composable
-fun SizeboxSelecter() {
-    val sizes = listOf("XXS", "XS", "S", "M", "L", "XL", "XXL")
-    val selectedSize by remember { mutableStateOf<String?>(null) } //chat
-
-    LazyRow(
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        /*
-        items(sizes) { size ->
-            SizeBoxes(
-                size = size,
-                isSelected = (size == selectedSize),
-                onClick = {
-                    println("size chosen")
-                    selectedSize = size
-                    //gør den grå
-                })
-
-        }
-         */
-    }
-}
 
 @Composable
-fun SizeBoxes(size: String, isSelected: Boolean,
+fun SizeBox(size: String, isSelected: Boolean,
               onClick:() -> Unit ) {
     Card(
         modifier = Modifier
-            .size(60.dp)
-            .clickable {
-                onClick()
-            },
+            .size(40.dp)
+            .clickable {},
         shape = RoundedCornerShape(8.dp)
     ) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxSize()
+                .border(
+                    width = 1.dp,
+                    color = Color.Gray,
+                    shape = RoundedCornerShape(7.dp)
+                )
                 //ændre farven til grå hvis valgt
                 .background(if (isSelected) Color.Gray else Color.White)
         ){
             Text(
                 text = size,
-                fontSize = 19.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Bold
             )
         }
+    }
+}
+
+
+@Composable
+fun SizeBoxesOnPage() {
+    Row(
+        modifier = Modifier.fillMaxWidth(0.65f),
+        horizontalArrangement = Arrangement.spacedBy(2.dp)
+    ) {
+        SizeBox("XXS", false, {})
+        SizeBox("XS", false, {})
+        SizeBox("S", false, {})
+        SizeBox("M", false, {})
+        SizeBox("L", false, {})
+        SizeBox("XL", false, {})
+        SizeBox("XXL", false, {})
     }
 }
