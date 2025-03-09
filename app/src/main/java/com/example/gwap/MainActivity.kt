@@ -48,8 +48,9 @@ fun NavComponent () {
     NavHost(navController = navController, startDestination = "StartScreen", builder = {
         composable("StartScreen") {StartScreen(navController)}
         composable("CreateProfile1") {CreateProfile1(navController)}
-        composable("CreateProfile2") {CreateProfile2()}
-        composable("CreateProfile3") {CreateProfile3()}
+        composable("CreateProfile2") {CreateProfile2(navController)}
+        composable("CreateProfile3") {CreateProfile3(navController)}
+        composable("ProfileView") { ProfileView(navController) }
     })
 }
 
@@ -92,17 +93,7 @@ fun StartScreen (navController: NavController) {
                 }
             }
         }
-        Row (
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 60.dp),
-            verticalAlignment = Alignment.Bottom,
-            horizontalArrangement = Arrangement.SpaceAround
-        ) {
-            Text(text = "Byt.", fontSize = 20.sp, color = Color.White)
-            Text(text = "Brug.", fontSize = 20.sp, color = Color.White)
-            Text(text = "Bevar.", fontSize = 20.sp, color = Color.White)
-        }
+       Navbar()
     }
 }
 
@@ -120,28 +111,37 @@ fun CreateProfile1 (navController: NavController) {
 }
 
 @Composable
-fun CreateProfile2 () {
+fun CreateProfile2 (navController: NavController) {
+    Background()
     BackgroundBox {
         TitleText("Find tøj der passer DIG")
-        //størrelser ah
         SizeBoxesOnPage()
 
         Text(text ="Så viser vi kun tøj du kan passe;)")
         TitleText("Hvad er din skostørrelse?")
-        //slider
+        PurpleSlider(35F, 48F)
+        GreenButton(navController, "CreateProfile3")
     }
 }
 
 
 
 @Composable
-fun CreateProfile3() {
-    BackgroundBox {
-        TitleText("Er du klar til at mødes?")
-        //dividier
-        Text(text = "Foretrækker du at mødes når i bytter tøj? Indtast dit postnummer og se tøj tæt på dig!")
-        InputField("Postnummer")
-        Text(text="Radius i km")
-        //slider
+fun CreateProfile3(navController: NavController) {
+    Background()
+        BackgroundBox {
+            TitleText("Er du klar til at mødes?")
+            Text(text = "Foretrækker du at mødes når i bytter tøj? Indtast dit postnummer og se tøj tæt på dig!")
+            InputField("Postnummer")
+            Text(text="Radius i km")
+            PurpleSlider(0F, 25F)
+            GreenButton(navController, "ProfileView")
     }
+}
+
+//profilview (ikkke eksisterende og pt enddestination)
+@Composable
+fun ProfileView (navController: NavController) {
+    Background()
+    Navbar()
 }
