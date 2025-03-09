@@ -116,7 +116,7 @@ fun TitleText (titleText:String) {
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun PurpleSlider (minValue:  Float, maxValue: Float) {
     var sliderValue by remember { mutableStateOf(0f)}
@@ -215,8 +215,7 @@ fun Background () {
 
 
 @Composable
-fun SizeBox(size: String, isSelected: Boolean,
-              onClick:() -> Unit ) {
+fun SizeBox(size: String, isSelected: Boolean, onClick:() -> Unit ) {
     Card(
         modifier = Modifier
             .size(34.dp)
