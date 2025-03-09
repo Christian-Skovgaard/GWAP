@@ -104,6 +104,7 @@ fun StartScreen (navController: NavController) {
 fun CreateProfile1 () {
     BackgroundBox {
         TitleText("hej")
+        InputField("wow!")
     }
 
 }
