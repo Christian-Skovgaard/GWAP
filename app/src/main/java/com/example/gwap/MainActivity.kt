@@ -127,7 +127,7 @@ fun CreateProfile2 (navController: NavController) {
         SizeBoxesOnPage()
         Text(text ="Så viser vi kun tøj du kan passe;)")
         TitleText("Hvad er din skostørrelse?")
-        PurpleSlider()
+        PurpleSlider(35F, 48F)
         GreenButton(navController, "CreateProfile3")
     }
 }
@@ -142,7 +142,7 @@ fun CreateProfile3(navController: NavController) {
             Text(text = "Foretrækker du at mødes når i bytter tøj? Indtast dit postnummer og se tøj tæt på dig!")
             InputField("Postnummer")
             Text(text="Radius i km")
-            PurpleSlider()
+            PurpleSlider(0F, 25F)
             GreenButton(navController, "")
     }
 }

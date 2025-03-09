@@ -100,13 +100,13 @@ fun TitleText (titleText:String) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Preview(showBackground = true)
 @Composable
-fun PurpleSlider () {
+fun PurpleSlider (minValue:  Float, maxValue: Float) {
     var sliderValue by remember { mutableStateOf(0f)}
     Box () {
         Slider (
             value = sliderValue,
             onValueChange = {sliderValue = it},
-            valueRange = 0f..100f,
+            valueRange = minValue..maxValue,//value kan ændres så vi kan begrænse hvilke skostr man kan vælge
             colors = SliderDefaults.colors(
                 activeTrackColor = Color(0xffA37AFA),
                 inactiveTrackColor = Color(0xffA37AFA)
