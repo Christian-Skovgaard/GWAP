@@ -2,11 +2,10 @@ package com.example.gwap
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,6 +17,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -39,6 +40,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 
@@ -79,23 +81,28 @@ fun TitleText (titleText:String) {
             color = Color(android.graphics.Color.parseColor("#D0D0D0")),
             thickness = 5.dp,
             modifier = Modifier
-                .padding(bottom = 5.dp)
+                .padding(horizontal = 10.dp)
                 .clip(RoundedCornerShape(4.dp))
-
-
         )
     }
 
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
-fun GreenButton () {
+fun GreenButton (navController: NavController, destination:String) {
     Button(
-        onClick = {}
+        modifier = Modifier
+            .padding(10.dp)
+            .fillMaxWidth(0.6f)
+            .aspectRatio(2.5f),
+        onClick = {navController.navigate(destination)},
+        shape = RoundedCornerShape(8.dp),
+        colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF50BE80))
     ) {
         Text(
-            text = "Næste"
+            text = "Næste",
+            fontSize = 22.sp
         )
     }
 }
@@ -116,14 +123,15 @@ fun BackgroundBox (content: @Composable () -> Unit) {
                 .border(
                     width = 13.dp,
                     color = Color(android.graphics.Color.parseColor("#A37AFA")),
-                    shape = RoundedCornerShape(16.dp)
-                    )
+                    shape = RoundedCornerShape(8.dp)
+                )
         ) {
             Column (
                 modifier = Modifier
                     .padding(50.dp)
                     .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween
             ){
                 content()
             }

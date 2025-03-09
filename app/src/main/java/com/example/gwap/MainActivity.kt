@@ -46,7 +46,8 @@ fun NavComponent () {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "StartScreen", builder = {
         composable("StartScreen") {StartScreen(navController)}
-        composable("CreateProfile1") {CreateProfile1()}
+        composable("CreateProfile1") {CreateProfile1(navController)}
+        composable("CreateProfile2") {CreateProfile2()}
     })
 }
 
@@ -73,13 +74,13 @@ fun StartScreen (navController: NavController) {
             Box {
                 Column {
                     Button(
-                        onClick = {},
+                        onClick = {navController.navigate("CreateProfile1")},
                         modifier = Modifier.fillMaxWidth(0.8f)
                     ) {
                         Text(text="Opret Profil")
                     }
                     Button(
-                        onClick = {navController.navigate("CreateProfile1")},
+                        onClick = {},
                         modifier = Modifier.fillMaxWidth(0.8f)
                     ) {
                         Text(text="Log In")
@@ -101,16 +102,21 @@ fun StartScreen (navController: NavController) {
     }
 }
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
-fun CreateProfile1 () {
+fun CreateProfile1 (navController: NavController) {
     BackgroundBox {
         TitleText("Lav din profil")
         InputField("Fulde navn *")
         InputField("Brugernavn *")
         InputField("Email *")
+        GreenButton(navController, "CreateProfile2")
     }
+}
 
+@Composable
+fun CreateProfile2 () {
+    BackgroundBox {  }
 }
 
 
