@@ -36,6 +36,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NavComponent()
+            CreateProfile2()
         }
     }
 }
@@ -118,7 +119,7 @@ fun CreateProfile1 () {
 fun CreateProfile2 () {
     BackgroundBox {
         TitleText("Find tøj der passer DIG")
-        //find ud af at lave en divider streg
+        //størrelser
         Text(text ="Så viser vi kun tøj du kan passe;)")
         TitleText("Hvad er din skostørrelse?")
         //slider
