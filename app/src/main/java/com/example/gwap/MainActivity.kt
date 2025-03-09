@@ -48,8 +48,8 @@ fun NavComponent () {
     NavHost(navController = navController, startDestination = "StartScreen", builder = {
         composable("StartScreen") {StartScreen(navController)}
         composable("CreateProfile1") {CreateProfile1(navController)}
-        composable("CreateProfile2") {CreateProfile2()}
-        composable("CreateProfile3") {CreateProfile3()}
+        composable("CreateProfile2") {CreateProfile2(navController)}
+        composable("CreateProfile3") {CreateProfile3(navController)}
     })
 }
 
@@ -120,28 +120,29 @@ fun CreateProfile1 (navController: NavController) {
 }
 
 @Composable
-fun CreateProfile2 () {
+fun CreateProfile2 (navController: NavController) {
+    Background()
     BackgroundBox {
         TitleText("Find tøj der passer DIG")
-        //størrelser
         SizeBoxesOnPage()
-
         Text(text ="Så viser vi kun tøj du kan passe;)")
         TitleText("Hvad er din skostørrelse?")
-        //slider
+        PurpleSlider()
+        GreenButton(navController, "CreateProfile3")
     }
 }
 
 
 
 @Composable
-fun CreateProfile3() {
-    BackgroundBox {
-        TitleText("Er du klar til at mødes?")
-        //dividier
-        Text(text = "Foretrækker du at mødes når i bytter tøj? Indtast dit postnummer og se tøj tæt på dig!")
-        InputField("Postnummer")
-        Text(text="Radius i km")
-        //slider
+fun CreateProfile3(navController: NavController) {
+    Background()
+        BackgroundBox {
+            TitleText("Er du klar til at mødes?")
+            Text(text = "Foretrækker du at mødes når i bytter tøj? Indtast dit postnummer og se tøj tæt på dig!")
+            InputField("Postnummer")
+            Text(text="Radius i km")
+            PurpleSlider()
+            GreenButton(navController, "")
     }
 }

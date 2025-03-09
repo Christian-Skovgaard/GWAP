@@ -19,6 +19,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -168,7 +169,7 @@ fun BackgroundBox (content: @Composable () -> Unit) {
         ) {
             Column (
                 modifier = Modifier
-                    .padding(50.dp)
+                    .padding(40.dp)
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween
@@ -200,7 +201,7 @@ fun SizeBox(size: String, isSelected: Boolean,
               onClick:() -> Unit ) {
     Card(
         modifier = Modifier
-            .size(40.dp)
+            .size(34.dp)
             .clickable {},
         shape = RoundedCornerShape(8.dp)
     ) {
@@ -213,12 +214,12 @@ fun SizeBox(size: String, isSelected: Boolean,
                     color = Color.Gray,
                     shape = RoundedCornerShape(7.dp)
                 )
-                //ændre farven til grå hvis valgt
+                //ændre farven til grå hvis valgt (lige nu bestemmer er de blot sat ind som uvaglte så denne linje gør ikke noget lige nu)
                 .background(if (isSelected) Color.Gray else Color.White)
         ){
             Text(
                 text = size,
-                fontSize = 14.sp,
+                fontSize = 13.sp,
                 fontWeight = FontWeight.Bold
             )
         }
@@ -228,16 +229,15 @@ fun SizeBox(size: String, isSelected: Boolean,
 
 @Composable
 fun SizeBoxesOnPage() {
-    Row(
-        modifier = Modifier.fillMaxWidth(0.65f),
+    LazyRow(
+        modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        SizeBox("XXS", false, {})
-        SizeBox("XS", false, {})
-        SizeBox("S", false, {})
-        SizeBox("M", false, {})
-        SizeBox("L", false, {})
-        SizeBox("XL", false, {})
-        SizeBox("XXL", false, {})
+        //laver en kasse til alle str
+        val sizeList = listOf("XXS", "XS", "S", "M", "L", "XL", "XXL")
+
+        items(sizeList){ size ->
+            SizeBox(size, false, {})
+        }
     }
 }
