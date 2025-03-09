@@ -3,6 +3,8 @@ package com.example.gwap
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -18,7 +20,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Divider
@@ -142,16 +143,17 @@ fun BackgroundBox (content: @Composable () -> Unit) {
     }
 }
 
+@Preview(showBackground = true)
 @Composable
 fun Background () {
     Box (
         modifier = Modifier.fillMaxSize()
     ) {
         Image(
-            painter = painterResource(id = R.drawable.backgoundImage), // Replace with your image
+            painter = painterResource(id = R.drawable.backgoundimage),
             contentDescription = null,
             contentScale = ContentScale.Crop,
-            modifier = Modifier.matchParentSize() // Ensures the image covers the entire Box
+            modifier = Modifier.matchParentSize()
         )
     }
 }
