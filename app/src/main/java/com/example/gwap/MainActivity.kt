@@ -106,7 +106,7 @@ fun CreateProfile1 (navController: NavController) {
         InputField("Fulde navn *")
         InputField("Brugernavn *")
         InputField("Email *")
-        GreenButton(navController, "CreateProfile2")
+        GreenButton("Næste",navController, "CreateProfile2")
     }
 }
 
@@ -120,7 +120,7 @@ fun CreateProfile2 (navController: NavController) {
         Text(text ="Så viser vi kun tøj du kan passe;)")
         TitleText("Hvad er din skostørrelse?")
         PurpleSlider(35F, 48F)
-        GreenButton(navController, "CreateProfile3")
+        GreenButton("Næste",navController, "CreateProfile3")
     }
 }
 
@@ -135,7 +135,7 @@ fun CreateProfile3(navController: NavController) {
             InputField("Postnummer")
             Text(text="Radius i km")
             PurpleSlider(0F, 25F)
-            GreenButton(navController, "ProfileView")
+            GreenButton("Færdig", navController, "ProfileView")
     }
 }
 

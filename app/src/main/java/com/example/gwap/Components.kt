@@ -149,7 +149,7 @@ fun PurpleSlider (minValue:  Float, maxValue: Float) {
 
 //@Preview(showBackground = true)
 @Composable
-fun GreenButton (navController: NavController, destination:String) {
+fun GreenButton (text:String, navController: NavController, destination:String) {
     Button(
         modifier = Modifier
             .padding(10.dp)
@@ -160,7 +160,7 @@ fun GreenButton (navController: NavController, destination:String) {
         colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF50BE80))
     ) {
         Text(
-            text = "Næste",
+            text = text,
             fontSize = 22.sp
         )
     }
