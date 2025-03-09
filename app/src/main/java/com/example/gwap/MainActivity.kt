@@ -50,6 +50,7 @@ fun NavComponent () {
         composable("CreateProfile1") {CreateProfile1(navController)}
         composable("CreateProfile2") {CreateProfile2(navController)}
         composable("CreateProfile3") {CreateProfile3(navController)}
+        composable("ProfileView") { ProfileView(navController) }
     })
 }
 
@@ -92,17 +93,7 @@ fun StartScreen (navController: NavController) {
                 }
             }
         }
-        Row (
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(bottom = 60.dp),
-            verticalAlignment = Alignment.Bottom,
-            horizontalArrangement = Arrangement.SpaceAround
-        ) {
-            Text(text = "Byt.", fontSize = 20.sp, color = Color.White)
-            Text(text = "Brug.", fontSize = 20.sp, color = Color.White)
-            Text(text = "Bevar.", fontSize = 20.sp, color = Color.White)
-        }
+       Navbar()
     }
 }
 
@@ -143,6 +134,13 @@ fun CreateProfile3(navController: NavController) {
             InputField("Postnummer")
             Text(text="Radius i km")
             PurpleSlider(0F, 25F)
-            GreenButton(navController, "")
+            GreenButton(navController, "ProfileView")
     }
+}
+
+//profilview (ikkke eksisterende og pt enddestination)
+@Composable
+fun ProfileView (navController: NavController) {
+    Background()
+    Navbar()
 }

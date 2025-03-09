@@ -1,14 +1,13 @@
 package com.example.gwap
 
+import android.R.id
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -17,23 +16,20 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Slider
 import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -52,7 +48,25 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
+
 @OptIn(ExperimentalMaterial3Api::class)
+
+@Composable
+fun Navbar(){
+    Row (
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 60.dp),
+        verticalAlignment = Alignment.Bottom,
+        horizontalArrangement = Arrangement.SpaceAround
+    ) {
+        Text(text = "Byt", fontSize = 20.sp, color = Color.White)
+        Text(text = "Brug", fontSize = 20.sp, color = Color.White)
+        Text(text = "Bevar", fontSize = 20.sp, color = Color.White)
+    }
+}
+
+
 
 @Composable
 fun InputField (fieldText: String) {
@@ -70,7 +84,11 @@ fun InputField (fieldText: String) {
             value = text,
             onValueChange = {newText -> text = newText},
             modifier = Modifier
-                .border(width = 2.dp, color = Color(android.graphics.Color.parseColor("#D0D0D0")), RoundedCornerShape(3.dp))
+                .border(
+                    width = 2.dp,
+                    color = Color(android.graphics.Color.parseColor("#D0D0D0")),
+                    RoundedCornerShape(3.dp)
+                )
                 .height(30.dp)
                 .fillMaxWidth()
 
@@ -240,4 +258,18 @@ fun SizeBoxesOnPage() {
             SizeBox(size, false, {})
         }
     }
+}
+
+//her ville man gå i gang med at lave billederne til profilview men nej
+@Composable
+fun ProfileGalleryPicture(img: Unit, onClick:() -> Unit) {
+    val listOfImgages = listOf("")
+
+            Card(
+            modifier = Modifier
+                .size(66.dp)
+                .clickable {}
+        ) {
+
+          }
 }
