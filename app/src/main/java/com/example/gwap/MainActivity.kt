@@ -114,11 +114,6 @@ fun CreateProfile1 (navController: NavController) {
     }
 }
 
-@Composable
-fun CreateProfile2 () {
-    BackgroundBox {  }
-}
-
 
 
 @Composable
@@ -126,6 +121,8 @@ fun CreateProfile2 () {
     BackgroundBox {
         TitleText("Find tøj der passer DIG")
         //størrelser
+        SizeBoxesOnPage()
+
         Text(text ="Så viser vi kun tøj du kan passe;)")
         TitleText("Hvad er din skostørrelse?")
         //slider
