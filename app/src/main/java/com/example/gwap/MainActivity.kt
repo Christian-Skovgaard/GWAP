@@ -115,13 +115,6 @@ fun CreateProfile1 (navController: NavController) {
 
 @Composable
 fun CreateProfile2 () {
-    BackgroundBox {  }
-}
-
-
-
-@Composable
-fun CreateProfile2 () {
     BackgroundBox {
         TitleText("Find tøj der passer DIG")
         //find ud af at lave en divider streg
